@@ -16,7 +16,7 @@ function Questions() {
   return (
     <>
       <div className={styles.questions}>
-        <div className={styles.ask_btn} onClick={handleOpen}>
+        <div className={styles.ask_btn} onClick={handleOpen} data-aos="zoom-in">
           <RiQuestionAnswerLine />
           Ask a Question
         </div>

@@ -1,5 +1,4 @@
-import { Footer, Navbar } from "@/components";
-import { Questions } from "@/components";
+import { Footer, Navbar, Questions } from "@/components";
 import React from "react";
 
 function QuestionPage() {

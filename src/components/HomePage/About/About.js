@@ -1,13 +1,15 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./About.module.css";
-import logo from '../../../assets/Landing/logo.png'
+import logo from "../../../assets/Landing/logo.png";
+import { useRouter } from "next/router";
 
 function About() {
+  const router = useRouter();
   return (
     <>
       <div className={styles.about}>
-        <div className={styles.about__left} data-aos="fade-right">
+        <div className={styles.about__left} data-aos="fade-up">
           <div className={styles.about__left__title}>
             Join the Future of Knowledge-Sharing with StackChain
           </div>
@@ -19,11 +21,16 @@ function About() {
             Join us to experience the future of knowledge-sharing!
           </div>
           <div className={styles.about__left__buttons}>
-            <div className={styles.about__left__button}>Get Started</div>
+            <div
+              className={styles.about__left__button}
+              onClick={() => router.push("/questions")}
+            >
+              Get Started
+            </div>
             <div className={styles.about__left__button}>Learn More</div>
           </div>
         </div>
-        <div className={styles.about__right} data-aos="fade-left">
+        <div className={styles.about__right} data-aos="fade-up">
           <div className={styles.about__right__image}>
             <Image src={logo} alt="logo" />
           </div>

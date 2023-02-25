@@ -1,6 +1,11 @@
 export { default as Navbar } from "./Navbar/Navbar";
-export { default as Hero } from "./Landing/Hero/Hero";
-export { default as About } from "./Landing/About/About";
-export { default as MoreDetails } from "./Landing/MoreDetails/MoreDetails";
+export { default as Hero } from "./HomePage/Hero/Hero";
+export { default as About } from "./HomePage/About/About";
+export { default as MoreDetails } from "./HomePage/MoreDetails/MoreDetails";
 export { default as Footer } from "./Footer/Footer";
-export { default as Questions } from "./Questions/Questions";
+export { default as Questions } from "./QuestionPage/Questions/Questions";
+export { default as QuestionCard } from "./QuestionPage/QuestionCard/QuestionCard";
+export { default as AskQuestionDialog } from "./QuestionPage/AskQuestionDialog/AskQuestionDialog";
+export { default as AddAnswerDialog } from "./QuestionDetailPage/AddAnswerDialog/AddAnswerDialog";
+export { default as AnswerCard } from "./QuestionDetailPage/AnswerCard/AnswerCard";
+export { default as QuestionDetail } from "./QuestionDetailPage/QuestionDetail/QuestionDetail";

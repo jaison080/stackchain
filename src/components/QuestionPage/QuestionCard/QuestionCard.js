@@ -1,10 +1,19 @@
+import { useRouter } from "next/router";
 import React from "react";
 import styles from "./QuestionCard.module.css";
 
 function QuestionCard() {
+  const router = useRouter();
   return (
     <>
-      <div className={styles.question_card}>
+      <div
+        className={styles.question_card}
+        data-aos="fade-up"
+        onClick={() => {
+          router.push("/questions/1");
+        }}
+        style={{ cursor: "pointer" }}
+      >
         <div className={styles.question_card__details}>
           <div className={styles.question_card__details__votes}>0 Votes</div>
           <div className={styles.question_card__details__answers}>
