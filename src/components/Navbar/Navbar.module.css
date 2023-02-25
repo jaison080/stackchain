@@ -97,3 +97,17 @@
   font-weight: 500;
   font-family: var(--tertiary-font);
 }
+@media (max-width:1200px) {
+  .navbar
+  {
+    padding: 1rem;
+  }
+ .navbar__links
+  {
+    display: none;
+  }
+.navbar__search
+  {
+    display: none;
+  }
+}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { hero } from "@/assets";
+import hero from '../../../assets/Landing/hero.svg'
 import styles from "./Hero.module.css";
 
 function Hero() {

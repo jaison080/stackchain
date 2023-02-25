@@ -1,6 +1,7 @@
 .about {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   gap: 2rem;
@@ -13,6 +14,7 @@
 }
 .about__left {
   display: flex;
+  min-width: 50%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -58,4 +60,28 @@
 .about__right__image img {
   width: 30rem;
   height: auto;
+}
+@media (max-width: 900px) {
+  .about {
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+  }
+  .about__left {
+
+    
+  }
+  .about__left__title {
+    font-size: 2rem;
+  }
+  .about__left__subtitle {
+    font-size: 1rem;
+  }
+  .about__left__button {
+    font-size: 1rem;
+  }
+  .about__right__image img {
+    width: 20rem;
+  }
 }

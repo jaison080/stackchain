@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./About.module.css";
-import { logo } from "../../../assets";
+import logo from '../../../assets/Landing/logo.png'
 
 function About() {
   return (

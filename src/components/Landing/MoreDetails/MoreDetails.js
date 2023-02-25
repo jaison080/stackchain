@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { details } from "@/assets";
+import details from "../../../assets/Landing/details.jpg";
 import styles from "./MoreDetails.module.css";
 
 function MoreDetails() {
