@@ -1,7 +1,16 @@
+import { About, Footer, Hero, MoreDetails, Navbar } from "@/components";
 import React from "react";
 
 function Home() {
-  return <div>StackChain Home</div>;
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <MoreDetails />
+      <Footer />
+    </>
+  );
 }
 
 export default Home;
