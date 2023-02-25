@@ -1,5 +1,5 @@
 .question_card {
-  background-color: #ECB365;
+  background-color: #ecb365;
   color: #064663;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@
 }
 .question_card__content__tag {
   background-color: #064663;
-    color: #fbcd08;
+  color: #fbcd08;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
@@ -90,6 +90,7 @@
   font-weight: 500;
   font-family: var(--secondary-font);
 }
+
 
 @media (max-width: 900px) {
   .question_card {
