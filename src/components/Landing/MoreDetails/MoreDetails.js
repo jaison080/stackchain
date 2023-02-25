@@ -10,7 +10,6 @@ function MoreDetails() {
         <div className={styles.more_details__left__title} data-aos="fade-up">
           Revolutionizing Knowledge-Sharing with StackChain
         </div>
-        <div className={styles.main__content}>
           <div className={styles.more_details__right} data-aos="fade-left">
             <div className={styles.more_details__right__image}>
               <Image src={details} alt="logo" />
@@ -36,7 +35,6 @@ function MoreDetails() {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 }

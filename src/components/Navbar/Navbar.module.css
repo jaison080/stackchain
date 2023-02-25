@@ -97,17 +97,20 @@
   font-weight: 500;
   font-family: var(--tertiary-font);
 }
-@media (max-width:1200px) {
-  .navbar
-  {
+.navbar__menu_container {
+  display: none;
+}
+@media (max-width: 1200px) {
+  .navbar {
     padding: 1rem;
   }
- .navbar__links
-  {
+  .navbar__menu_container {
+    display: flex;
+  }
+  .navbar__links {
     display: none;
   }
-.navbar__search
-  {
+  .navbar__search {
     display: none;
   }
 }

@@ -3,20 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  gap: 2rem;
-  height: 100%;
+  gap: 1rem;
   padding: 12rem;
-}
-.main__content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  height: 100%;
 }
 .more_details__left {
   display: flex;
@@ -24,7 +12,6 @@
   justify-content: center;
   align-items: flex-start;
   gap: 2rem;
-  width: 50%;
 }
 .more_details__left__title {
   font-size: 3rem;
@@ -40,6 +27,7 @@
 }
 .more_details__left__buttons {
   display: flex;
+  width: 100%;
   gap: 1rem;
   justify-content: center;
   align-items: center;

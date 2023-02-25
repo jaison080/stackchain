@@ -1,7 +1,7 @@
 import { About, Footer, Hero, MoreDetails, Navbar } from "@/components";
 import React from "react";
 
-function Home() {
+function HomePage() {
   return (
     <>
       <Navbar />
@@ -13,4 +13,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

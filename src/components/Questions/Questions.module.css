@@ -1,0 +1,22 @@
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+}
+.questions__title {
+  font-size: 2rem;
+  font-family: var(--primary-font);
+  font-weight: 600;
+  color: #fbcd08;
+}
+@media (max-width: 900px) {
+  .questions {
+    padding: 2rem;
+    padding-top: 8rem;
+  }
+}
