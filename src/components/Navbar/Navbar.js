@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useRouter } from "next/router";
+import { Drawer } from "@mui/material";
 
 function Navbar() {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div className={styles.navbar}>
         <div className={styles.navbar__left}>
-          <div className={styles.navbar__menu_container}>
-            <HiMenuAlt2 className={styles.navbar__menu} />
+          <div
+            className={styles.navbar__menu_container}
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            <HiMenuAlt2
+              className={styles.navbar__menu}
+              onClick={() => {
+                setOpen(true);
+              }}
+            />
           </div>
           <div
             className={styles.navbar__logo}
@@ -36,6 +52,53 @@ function Navbar() {
           <div className={styles.signup_btn}>Sign Up</div>
         </div>
       </div>
+      <Drawer
+        open={open}
+        onClick={handleDrawerClose}
+        onClose={(event, reason) => {
+          if (reason !== "backdropClick") {
+            handleDrawerClose();
+          } else if (reason !== "escapeKeyDown") {
+            handleDrawerClose();
+          }
+        }}
+        anchor="left"
+      >
+        <div className={styles.nav__drawer}>
+          <div className={styles.navbar__drawer_header}>
+            <div
+              className={styles.navbar__logo}
+              data-aos="fade-right"
+              data-aos-duration="600"
+            >
+              StackChain
+            </div>
+            <div
+              className={styles.navbar__items_mob}
+              data-aos="fade-right"
+              data-aos-duration="600"
+            >
+              <div className={styles.navbar__link} onClick={handleDrawerClose}>
+                About
+              </div>
+              <div className={styles.navbar__link} onClick={handleDrawerClose}>
+                Products
+              </div>
+              <div className={styles.navbar__link} onClick={handleDrawerClose}>
+                For Teams
+              </div>
+              <div className={styles.navbar__search_1}>
+                <input type="text" placeholder="Search" />
+              </div>
+
+              <div className={styles.navbar__links_1}>
+                <div className={styles.login_btn_1}>Log In</div>
+                <div className={styles.signup_btn_1}>Sign Up</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Drawer>
     </>
   );
 }
