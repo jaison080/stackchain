@@ -17,7 +17,14 @@ function UserDetails(props) {
   async function initialize() {
     const SocialLogin = (await import("@biconomy/web3-auth")).default;
     const socialLogin = new SocialLogin();
-    await socialLogin.init();
+    const signature = await socialLogin.whitelistUrl(
+      "https://stackchain-kappa.vercel.app"
+    );
+    await socialLogin.init({
+      whitelistUrls: {
+        "https://stackchain-kappa.vercel.app": signature,
+      },
+    });
     setSocialLogin(socialLogin);
   }
   function handleLogin() {
