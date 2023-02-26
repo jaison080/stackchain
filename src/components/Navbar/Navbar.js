@@ -3,6 +3,7 @@ import styles from "./Navbar.module.css";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useRouter } from "next/router";
 import { Drawer } from "@mui/material";
+import { Login } from "@/components";
 
 function Navbar() {
   const router = useRouter();
@@ -48,7 +49,7 @@ function Navbar() {
         </div>
 
         <div className={styles.navbar__links}>
-          <div className={styles.login_btn}>Log In</div>
+          <Login className={styles.login_btn}/>
           <div className={styles.signup_btn}>Sign Up</div>
         </div>
       </div>
@@ -92,7 +93,7 @@ function Navbar() {
               </div>
 
               <div className={styles.navbar__links_1}>
-                <div className={styles.login_btn_1}>Log In</div>
+                <Login className={styles.login_btn_1}/>
                 <div className={styles.signup_btn_1}>Sign Up</div>
               </div>
             </div>
