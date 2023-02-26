@@ -49,13 +49,11 @@ function Navbar() {
         </div>
 
         <div className={styles.navbar__links}>
-          <Login className={styles.login_btn}/>
-          <div className={styles.signup_btn}>Sign Up</div>
+          <Login className={styles.login_btn} />
         </div>
       </div>
       <Drawer
         open={open}
-        onClick={handleDrawerClose}
         onClose={(event, reason) => {
           if (reason !== "backdropClick") {
             handleDrawerClose();
@@ -79,13 +77,22 @@ function Navbar() {
               data-aos="fade-right"
               data-aos-duration="600"
             >
-              <div className={styles.navbar__link} onClick={handleDrawerClose}>
+              <div
+                className={styles.navbar__link}
+                onClick={() => handleDrawerClose}
+              >
                 About
               </div>
-              <div className={styles.navbar__link} onClick={handleDrawerClose}>
+              <div
+                className={styles.navbar__link}
+                onClick={() => handleDrawerClose}
+              >
                 Products
               </div>
-              <div className={styles.navbar__link} onClick={handleDrawerClose}>
+              <div
+                className={styles.navbar__link}
+                onClick={() => handleDrawerClose}
+              >
                 For Teams
               </div>
               <div className={styles.navbar__search_1}>
@@ -93,8 +100,7 @@ function Navbar() {
               </div>
 
               <div className={styles.navbar__links_1}>
-                <Login className={styles.login_btn_1}/>
-                <div className={styles.signup_btn_1}>Sign Up</div>
+                <Login className={styles.login_btn_1} />
               </div>
             </div>
           </div>
