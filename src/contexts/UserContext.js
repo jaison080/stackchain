@@ -8,12 +8,12 @@ function UserDetails(props) {
   const [socialLogin, setSocialLogin] = useState(null);
   const [provider, setProvider] = useState(null);
   const [smartAccount, setSmartAccount] = useState(null);
-
+  const [dwitter, setDwitter] = useState(null);
   /**
    * loginStatus= ["loading", "logginIn", "loggedIn", "loggedOut", "logginOut"]
    */
   const [loginStatus, setLoginStatus] = useState("loading");
-
+  const contract = require("../contracts/Dwitter.json");
   async function initialize() {
     const SocialLogin = (await import("@biconomy/web3-auth")).default;
     const socialLogin = new SocialLogin();
@@ -21,6 +21,7 @@ function UserDetails(props) {
       "https://stackchain-kappa.vercel.app"
     );
     await socialLogin.init({
+      chainId: ethers.utils.hexValue(5),
       whitelistUrls: {
         "https://stackchain-kappa.vercel.app": signature,
       },
@@ -50,11 +51,36 @@ function UserDetails(props) {
     }
     setLoginStatus("logginIn");
     const ethersProvider = new ethers.providers.Web3Provider(
-      socialLogin.provider
+      socialLogin.provider, 5
     );
+   
+    
+    // await ethersProvider.send('wallet_addEthereumChain', [
+    //   {
+    //     chainId: '0x5',
+    //     chainName: 'Goerli',
+    //     rpcUrls: ['https://goerli.infura.io/v3/YOUR-PROJECT-ID'],
+    //     nativeCurrency: {
+    //       name: 'Goerli Ether',
+    //       symbol: 'GoETH',
+    //       decimals: 18,
+    //     },
+    //     blockExplorerUrls: ['https://goerli.etherscan.io'],
+    //   },
+    // ]);
+
+    // console.log('Switched to Goerli network');
     setProvider(ethersProvider);
+   
   }
 
+
+  useEffect(() => {
+    if(provider){
+      const Dwitter = new ethers.Contract("0x3B235C8E287498c4053A0BEdC4D76D0c2175c933", contract.abi, provider.getSigner());
+      setDwitter(Dwitter);
+    }
+  }, [provider]);
   async function initSmartAccount() {
     if (!provider) return;
     setLoginStatus("logginIn");
@@ -122,6 +148,7 @@ function UserDetails(props) {
         smartAccount,
         loginStatus,
         handleLogin,
+        dwitter
       }}
     >
       {props.children}

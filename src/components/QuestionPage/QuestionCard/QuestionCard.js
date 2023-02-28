@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import React from "react";
 import styles from "./QuestionCard.module.css";
 
-function QuestionCard() {
+function QuestionCard({title, description}) {
   const router = useRouter();
-  return (
+  return(
     <>
       <div
         className={styles.question_card}
@@ -23,13 +23,10 @@ function QuestionCard() {
         </div>
         <div className={styles.question_card__content}>
           <div className={styles.question_card__content__title}>
-            hey i was wondering if anyone here knew how to solve this one
+            {title}
           </div>
           <div className={styles.question_card__content__description}>
-            public Point2D[] getEndpoints() This method creates and returns an
-            array containing copies of the two endpoints of this Line2D object.
-            Note that the length of this array must be 2 and the order of the
-            Point2D objects in the array is insignificant.
+            {description}
           </div>
           <div className={styles.question_card__content__tags}>
             <div className={styles.question_card__content__tag}>finance</div>

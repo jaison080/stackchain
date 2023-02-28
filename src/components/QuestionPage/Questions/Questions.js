@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import styles from "./Questions.module.css";
 import { RiQuestionAnswerLine } from "react-icons/ri";
 import AskQuestionDialog from "../AskQuestionDialog/AskQuestionDialog";
+import { UserContext } from "@/contexts/UserContext";
 
 function Questions() {
   const [open, setOpen] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const {dwitter} =  React.useContext(UserContext);
   const handleClose = () => {
     setOpen(false);
   };
   const handleOpen = () => {
     setOpen(true);
   };
-
+useEffect(() => {
+    if(!dwitter) return;
+    dwitter.getAllQuestions().then((res) => {
+      setQuestions(res);
+    });
+  }, [dwitter]);
   return (
     <>
       <div className={styles.questions}>
@@ -21,9 +29,14 @@ function Questions() {
           Ask a Question
         </div>
         <div className={styles.questions__title}>Questions Asked</div>
-        <QuestionCard />
-        <QuestionCard />
-        <QuestionCard />
+        {questions.map((question) => (
+          <QuestionCard
+            
+            title={question[0]}  
+            description={question[1]}
+            
+
+          />))}
       </div>
       <AskQuestionDialog open={open} handleClose={handleClose} />
     </>

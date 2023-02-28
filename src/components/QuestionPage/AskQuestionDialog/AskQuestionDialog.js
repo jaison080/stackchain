@@ -1,9 +1,25 @@
 import { Dialog, DialogContent } from "@mui/material";
 import styles from "./AskQuestionDialog.module.css";
 import React from "react";
+import { UserContext } from "@/contexts/UserContext";
 
 function AskQuestionDialog({ open, handleClose }) {
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [tags, setTags] = React.useState("");
+  const {dwitter} =  React.useContext(UserContext);
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    
+    dwitter.postQuestion(title, description).then((res) => {
+      console.log(res);
+    }
+    );
+  };
+
   return (
+    
     <Dialog
       open={open}
       PaperProps={{
@@ -28,30 +44,33 @@ function AskQuestionDialog({ open, handleClose }) {
       aria-describedby="alert-dialog-description"
     >
       <DialogContent sx={{ "&::-webkit-scrollbar": { display: "none" } }}>
+      <form onSubmit={handleSubmit}>
         <div className={styles.ask_question_dialog__title}>Ask Question</div>
         <div className={styles.ask_question_dialog__form}>
           <div className={styles.ask_question_dialog__description}>
             <div className={styles.ask_question_dialog__description__title}>
               Question Title
             </div>
-            <input type="text" />
+            <input type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}} required/>
           </div>
           <div className={styles.ask_question_dialog__description}>
             <div className={styles.ask_question_dialog__description__title}>
               Question Description
             </div>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
+            <textarea name="" id="" cols="30" rows="5" value={description} onChange={(e)=>{setDescription(e.target.value)}} required></textarea>
           </div>
           <div className={styles.ask_question_dialog__description}>
             <div className={styles.ask_question_dialog__description__title}>
               Tags {"( Seperate by , )"}
             </div>
-            <input type="text" />
+            <input type="text" value={tags} onChange={(e)=>{setTags(e.target.value)}} />
           </div>
-          <div className={styles.ask_question_dialog__button}>Ask Question</div>
+          <button className={styles.ask_question_dialog__button} type="submit">Ask Question</button>
         </div>
+        </form>
       </DialogContent>
     </Dialog>
+    
   );
 }
 
