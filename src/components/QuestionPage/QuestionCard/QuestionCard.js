@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import styles from "./QuestionCard.module.css";
 
-function QuestionCard({title, description}) {
+function QuestionCard({title, description, id}) {
   const router = useRouter();
   return(
     <>
@@ -10,7 +10,7 @@ function QuestionCard({title, description}) {
         className={styles.question_card}
         data-aos="fade-up"
         onClick={() => {
-          router.push("/questions/1");
+          router.push(`/questions/${id}`);
         }}
         style={{ cursor: "pointer" }}
       >

@@ -31,9 +31,9 @@ useEffect(() => {
         <div className={styles.questions__title}>Questions Asked</div>
         {questions.map((question) => (
           <QuestionCard
-            
-            title={question[0]}  
-            description={question[1]}
+            id={question[0]}
+            title={question[1]}  
+            description={question[2]}
             
 
           />))}

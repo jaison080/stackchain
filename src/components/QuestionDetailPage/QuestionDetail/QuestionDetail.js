@@ -1,23 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./QuestionDetail.module.css";
 import { BsFillTriangleFill } from "react-icons/bs";
 import { RiQuestionAnswerLine } from "react-icons/ri";
 import AddAnswerDialog from "../AddAnswerDialog/AddAnswerDialog";
 import AnswerCard from "../AnswerCard/AnswerCard";
+import { useRouter } from 'next/router'
+import { UserContext } from "@/contexts/UserContext";
+
 
 function QuestionDetail() {
+  const router = useRouter()
+  const {id} = router.query
+  const {dwitter} =  React.useContext(UserContext);
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const handleClose = () => {
     setOpen(false);
   };
   const handleOpen = () => {
     setOpen(true);
   };
+
+  useEffect(() => {
+    if(!dwitter) return;
+    dwitter.questions(id).then((res) => {
+      setTitle(res[0]);
+      setDescription(res[1]);
+    }
+    );
+  }, [dwitter, id]);
+
   return (
     <>
       <div className={styles.questionDetail}>
         <div className={styles.questionDetail__main} data-aos="zoom-in">
-          <div className={styles.questionDetail__title}>Question Title</div>
+          <div className={styles.questionDetail__title}>{title}</div>
           <div className={styles.questionDetail__details}>
             <div className={styles.questionDetail__details__views}>
               Asked today
@@ -48,11 +66,7 @@ function QuestionDetail() {
             </div>
             <div className={styles.questionDetail__content__right}>
               <div className={styles.questionDetail__content__description}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                tincidunt, nisl eget aliquam tincidunt, nunc nisl aliquam nisl,
-                a aliquam nisl nisl sit amet nisl. Donec euismod, nisl eget
-                aliquam tincidunt, nunc nisl aliquam nisl, a aliquam nisl nisl
-                sit amet nisl. Donec euismod, nisl eget aliquam tincidunt, nunc
+               {description}
               </div>
               <div className={styles.questionDetail__content__tags}>
                 <div className={styles.questionDetail__content__tag}>

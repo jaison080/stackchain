@@ -77,7 +77,7 @@ function UserDetails(props) {
 
   useEffect(() => {
     if(provider){
-      const Dwitter = new ethers.Contract("0x3B235C8E287498c4053A0BEdC4D76D0c2175c933", contract.abi, provider.getSigner());
+      const Dwitter = new ethers.Contract("0x3BAc573E881D3eFc8E3CE9d6d73c0eB749f39d7f", contract.abi, provider.getSigner());
       setDwitter(Dwitter);
     }
   }, [provider]);
