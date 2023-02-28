@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./AnswerCard.module.css";
 import { BsFillTriangleFill } from "react-icons/bs";
 
-function AnswerCard() {
+function AnswerCard({title}) {
   return (
     <>
       <div className={styles.questionDetail__answers__content} data-aos="fade-up">
@@ -24,11 +24,7 @@ function AnswerCard() {
         </div>
         <div className={styles.questionDetail__answers__content__right}>
           <div className={styles.questionDetail__answers__content__description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            tincidunt, nisl eget aliquam tincidunt, nunc nisl aliquam nisl, a
-            aliquam nisl nisl sit amet nisl. Donec euismod, nisl eget aliquam
-            tincidunt, nunc nisl aliquam nisl, a aliquam nisl nisl sit amet
-            nisl. Donec euismod, nisl eget aliquam tincidunt, nunc
+            {title}
           </div>
           <div className={styles.questionDetail__answers__content__tags}>
             <div className={styles.questionDetail__answers__content__tag}>

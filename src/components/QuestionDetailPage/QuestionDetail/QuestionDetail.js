@@ -15,6 +15,7 @@ function QuestionDetail() {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [answers, setAnswers] = useState([]);
   const handleClose = () => {
     setOpen(false);
   };
@@ -29,6 +30,9 @@ function QuestionDetail() {
       setDescription(res[1]);
     }
     );
+    dwitter.getAnswers(id).then((res) => {
+     setAnswers(res[0])
+    })
   }, [dwitter, id]);
 
   return (
@@ -87,9 +91,10 @@ function QuestionDetail() {
             <RiQuestionAnswerLine />
             Add Answer
           </div>
-          <AnswerCard />
-          <AnswerCard />
-          <AnswerCard />
+          { answers.map((answer) => (
+          <AnswerCard title = {answer}/>
+          ))
+}
         </div>
       </div>
       <AddAnswerDialog open={open} handleClose={handleClose} />

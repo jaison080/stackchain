@@ -1,8 +1,27 @@
 import { Dialog, DialogContent } from "@mui/material";
 import styles from "./AddAnswerDialog.module.css";
 import React from "react";
+import { UserContext } from "@/contexts/UserContext";
+import { useRouter } from 'next/router'
 
 function AddAnswerDialog({ open, handleClose }) {
+  const [answer, setAnswer] = React.useState("");
+  const {dwitter} =  React.useContext(UserContext);
+  const router = useRouter()
+  const {id} = router.query
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(!dwitter) return;
+    dwitter.addAnswer(id, answer).then((res) => {
+      console.log(res);
+      alert("Answer added successfully")
+    }).catch((err) => {
+      console.log(err);
+      
+    })
+  };
+
   return (
     <Dialog
       open={open}
@@ -28,13 +47,14 @@ function AddAnswerDialog({ open, handleClose }) {
       aria-describedby="alert-dialog-description"
     >
       <DialogContent sx={{ "&::-webkit-scrollbar": { display: "none" } }}>
+        <form onSubmit = {handleSubmit}>
         <div className={styles.ask_question_dialog__title}>Add Answer</div>
         <div className={styles.ask_question_dialog__form}>
           <div className={styles.ask_question_dialog__description}>
             <div className={styles.ask_question_dialog__description__title}>
               Enter your answer
             </div>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
+            <textarea name="" id="" cols="30" rows="5" value={answer} onChange={(e)=>setAnswer(e.target.value)} required></textarea>
           </div>
           <div className={styles.ask_question_dialog__description}>
             <div className={styles.ask_question_dialog__description__title}>
@@ -42,8 +62,9 @@ function AddAnswerDialog({ open, handleClose }) {
             </div>
             <input type="text" />
           </div>
-          <div className={styles.ask_question_dialog__button}>Add Answer</div>
+          <button className={styles.ask_question_dialog__button} type='submit'>Add Answer</button>
         </div>
+        </form>
       </DialogContent>
     </Dialog>
   );
