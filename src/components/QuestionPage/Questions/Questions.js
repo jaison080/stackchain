@@ -4,6 +4,7 @@ import styles from "./Questions.module.css";
 import { RiQuestionAnswerLine } from "react-icons/ri";
 import AskQuestionDialog from "../AskQuestionDialog/AskQuestionDialog";
 import { UserContext } from "@/contexts/UserContext";
+import { HashLoader } from "react-spinners";
 
 function Questions() {
   const [open, setOpen] = useState(false);
@@ -23,10 +24,7 @@ useEffect(() => {
       setLoading(false)
     });
   }, [dwitter]);
-  if(loading)
-  return <div>
-    loading...
-  </div>
+
   return (
     <>
       <div className={styles.questions}>
@@ -35,6 +33,13 @@ useEffect(() => {
           Ask a Question
         </div>
         <div className={styles.questions__title}>Questions Asked</div>
+        {
+          loading&&<div style={{
+            display:"flex",
+            minHeight:"80vh",
+            justifyContent:"center",alignItems:"flex-start"
+          }}><HashLoader size={60} color="#fbcd08"/></div>
+        }
         {questions.map((question) => (
           <QuestionCard
             id={question[0]}
