@@ -13,12 +13,15 @@ function AddAnswerDialog({ open, handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!dwitter) return;
-    dwitter.addAnswer(id, answer).then((res) => {
-      console.log(res);
+    dwitter.addAnswer(id, answer).then(async(res) => {
+      await res.wait()
       alert("Answer added successfully")
+      handleClose()
+      window.location.reload();
     }).catch((err) => {
+      handleClose()
       console.log(err);
-      
+      window.location.reload();
     })
   };
 

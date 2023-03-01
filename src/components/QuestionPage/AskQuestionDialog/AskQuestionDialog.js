@@ -12,10 +12,18 @@ function AskQuestionDialog({ open, handleClose }) {
 
     e.preventDefault();
     
-    dwitter.postQuestion(title, description).then((res) => {
-      console.log(res);
+    dwitter.postQuestion(title, description).then(async(res) => {
+      await res.wait()
+      alert("Question Posted");
+      handleClose();
+      
+      window.location.reload();
     }
-    );
+    ).catch((err) => {
+      console.log(err);
+      handleClose()
+      window.location.reload();
+    });
   };
 
   return (
